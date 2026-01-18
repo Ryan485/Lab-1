@@ -26,12 +26,22 @@ body {
     padding: 20px;
     width: 300px;
     border: 2px solid #2c4f99;
+    font-size: 16px;
 }
 
 .remove-btn {
     margin-left: 20px;
     padding: 10px 18px;
     background-color: orange;
+    border: 2px solid black;
+    color: white;
+    cursor: pointer;
+}
+
+#add-btn {
+    margin-top: 10px;
+    padding: 10px 25px;
+    background-color: green;
     border: 2px solid black;
     color: white;
     cursor: pointer;
