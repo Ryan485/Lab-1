@@ -46,3 +46,12 @@ body {
     color: white;
     cursor: pointer;
 }
+
+#back-btn {
+    margin-top: 10px;
+    padding: 10px 25px;
+    background-color: orangered;
+    border: 2px solid black;
+    color: white;
+    cursor: pointer;
+}

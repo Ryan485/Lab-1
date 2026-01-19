@@ -27,3 +27,23 @@ function loadNotes() {
     }
 }
 
+function renderNotes(notes) {
+    notesContainer.innerHTML = "";
+
+    for (const note of notes) {
+        const box = document.createElement("div");
+        box.className = "note-box";
+        box.textContent = note.text ?? "";
+        notesContainer.appendChild(box);
+    }
+}
+
+function retrieveAndRender() {
+    const notes = loadNotes();
+    renderNotes(notes);
+    setUpdatedTime(Date.now());
+}
+
+retrieveAndRender();
+
+setInterval(retrieveAndRender, 2000);
