@@ -18,26 +18,60 @@ function setLastSavedTime(time) {
     lastSaved.textContent = "stored at: " + formatTime(time);
 }
 
-addBtn.addEventListener("click", () => {
+function saveNotes() {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(notes));
+    setLastSavedTime(Date.now());
+}
+
+function loadNotes() {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) return [];
+
+    try {
+        const parsed = JSON.parse(raw);
+        return Array.isArray(parsed) ? parsed : [];
+    } catch {
+        return [];
+    }
+}
+
+function createNoteRow(note) {
     const noteRow = document.createElement("div");
     noteRow.className = "note-row";
 
     const textarea = document.createElement("textarea");
     textarea.className = "note-box";
+    textarea.value = note.text;
+
+    textarea.addEventListener("input", () => {
+        note.text = textarea.value;
+    });
 
     const removeBtn = document.createElement("button");
     removeBtn.className = "remove-btn";
-    removeBtn.textContent = "Remove"
+    removeBtn.textContent = "Remove";
 
     removeBtn.addEventListener("click", () => {
+        notes = notes.filter(n => n.id !== note.id);
         noteRow.remove();
+        saveNotes();
     })
 
-    //put textarea and button inside the row
     noteRow.appendChild(textarea);
     noteRow.appendChild(removeBtn);
 
-    //make them appear
-    notesContainer.appendChild(noteRow);
+    return noteRow;
+}
+
+addBtn.addEventListener("click", () => {
+    const note = {
+        id: Date.now() + Math.random(),
+        text: ""
+    };
+
+    notes.push(note);
+    notesContainer.appendChild(createNoteRow(note));
+
+    saveNotes();
 });
 
