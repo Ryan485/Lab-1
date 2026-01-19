@@ -1,3 +1,5 @@
+//ChatGPT assisted in the coding on this file.
+
 const STORAGE_KEY = "writer_notes";
 
 const notesContainer = document.getElementById("notes-container");

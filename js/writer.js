@@ -1,3 +1,5 @@
+//ChatGPT assisted in the coding on this file.
+
 const STORAGE_KEY = "writer_notes";
 
 const lastSaved = document.getElementById("last-saved");
@@ -71,7 +73,7 @@ addBtn.addEventListener("click", () => {
 
     notes.push(note);
     notesContainer.appendChild(createNoteRow(note));
-
+s
     saveNotes();
 });
 
