@@ -75,3 +75,10 @@ addBtn.addEventListener("click", () => {
     saveNotes();
 });
 
+notes = loadNotes();
+
+for (const note of notes) {
+    notesContainer.appendChild(createNoteRow(note));
+}
+
+setInterval(saveNotes, 2000);
